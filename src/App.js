@@ -6,7 +6,9 @@ import './App.css'
 import Card from './Card'
 import GuessCount from './GuessCount'
 
-import HallOfFame, {FAKE_HOF} from "./HallOfFame";
+import HallOfFame from "./HallOfFame";
+import CreditCard from "./CreditCard";
+import HighScoreInput from "./HighScoreInput";
 
 const SIDE = 3
 const SYMBOLS = '🍕🍔🍟🌭🍿🧂🥓🥚🥯🥨🥐🍞🧈🥞🧇🍳🥖🧀🥗🥙🥪🌮🌯🥫🍱🥡🥠🍠🥟🥩🍗🍖🍘🍙🍚🍛🍜🦪🍣🍤🍥🥮🍢🧆🥘🍲🍝🥣🍰🎂🍪🍩🍨🍧🍦🥧🧁🍫🍬🍭🍡🍮🍯🍼🍷🍾🍶🧉🍵☕🧃🥛🍸🍹🍺🍻🥂🥃🧊🥤🍇🥥🥝🏺🥄🍴🍽🥢🍈🍉🍊🍋🍌🍍🥭🍎🌽🍆🍅🍓🍒🍑🍐🍏🌶🍄🥑🥒🥬🥦🥔🧄🌹🏵🌸💐🥜🌰🥕🧅🌺🌻🌼🌷🥀☘🌱🌲🍂🍁🍀🌿🌾🌵🌴🌳🍃'
@@ -17,6 +19,7 @@ class App extends Component {
         plateauCards: this.generateCards(),
         currentPair: [],
         guesses: 0,
+        hallOfFame: null,
         matchedCardIndices: [],
     }
 
@@ -73,13 +76,16 @@ class App extends Component {
         setTimeout(() => this.setState({currentPair: [] }), PAUSE_MS)
     }
 
-
+    displayHallOfFame = (hallOfFame) => {
+        this.setState({hallOfFame})
+    }
 
     render() {
-        const { plateauCards, guesses, matchedCardIndices } = this.state
+        const { plateauCards, guesses, hallOfFame, matchedCardIndices } = this.state
         const won = matchedCardIndices.length === plateauCards.length
         return (
             <div className="memory">
+                <CreditCard />
                 <GuessCount guesses={0} />
                 {plateauCards.map((card, index) => (
                     <Card
@@ -90,7 +96,13 @@ class App extends Component {
                         onClick={this.handleCardClick}
                     />
                 ))}
-                {won && <HallOfFame entries={FAKE_HOF}/>}
+                {won &&
+                    (hallOfFame ? (
+                        <HallOfFame entries={hallOfFame}/>
+                    ) : (
+                        <HighScoreInput guesses={guesses} onStored={this.displayHallOfFame} />
+                    ))
+                }
             </div>
         )
     }
