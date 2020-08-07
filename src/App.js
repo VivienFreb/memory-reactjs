@@ -47,12 +47,11 @@ class App extends Component {
         return indexMatched ? 'visible' : 'hidden'
     }
 
-    handleCardClick = (index) => {
+    handleCardClick = (index, feedback) => {
         const { currentPair } = this.state
 
-        if(currentPair.length === 2){
+        if(feedback === 'visible' || currentPair.length === 2)
             return
-        }
 
         if (currentPair.length === 1 && index !== currentPair[0]){
             this.handleNewPairClosedBy(index)
