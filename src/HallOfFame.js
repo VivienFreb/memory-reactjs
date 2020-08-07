@@ -40,7 +40,7 @@ export const FAKE_HOF = [
 ]
 
 const HOF_KEY = '::Memory::HallofFame'
-const HOF_MAX_SIZE = 10
+const HOF_MAX_SIZE = 3
 
 export function saveHOFEntry(entry, onStored) {
     entry.date = new Date().toLocaleDateString()

@@ -10,7 +10,7 @@ import HallOfFame from "./HallOfFame";
 import CreditCard from "./CreditCard";
 import HighScoreInput from "./HighScoreInput";
 
-const SIDE = 3
+const SIDE = 6
 const SYMBOLS = '🍕🍔🍟🌭🍿🧂🥓🥚🥯🥨🥐🍞🧈🥞🧇🍳🥖🧀🥗🥙🥪🌮🌯🥫🍱🥡🥠🍠🥟🥩🍗🍖🍘🍙🍚🍛🍜🦪🍣🍤🍥🥮🍢🧆🥘🍲🍝🥣🍰🎂🍪🍩🍨🍧🍦🥧🧁🍫🍬🍭🍡🍮🍯🍼🍷🍾🍶🧉🍵☕🧃🥛🍸🍹🍺🍻🥂🥃🧊🥤🍇🥥🥝🏺🥄🍴🍽🥢🍈🍉🍊🍋🍌🍍🥭🍎🌽🍆🍅🍓🍒🍑🍐🍏🌶🍄🥑🥒🥬🥦🥔🧄🌹🏵🌸💐🥜🌰🥕🧅🌺🌻🌼🌷🥀☘🌱🌲🍂🍁🍀🌿🌾🌵🌴🌳🍃'
 const PAUSE_MS = 750
 
@@ -85,8 +85,7 @@ class App extends Component {
         const won = matchedCardIndices.length === plateauCards.length
         return (
             <div className="memory">
-                <CreditCard />
-                <GuessCount guesses={0} />
+                <GuessCount guesses={guesses} />
                 {plateauCards.map((card, index) => (
                     <Card
                         card={card}

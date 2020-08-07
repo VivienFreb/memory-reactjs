@@ -16,7 +16,8 @@ You will also see any lint errors in the console.
 
 ### `yarn test`
 
-Permet de voir les tests Jest (fichiers .test.js ou .spec.js)
+Permet de voir les tests Jest (fichiers .test.js ou .spec.js)<br />
+`npm test -- --coverage` permet de voir la couverture des tests (quels fichiers ne sont pas testés etc.)<br />
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 

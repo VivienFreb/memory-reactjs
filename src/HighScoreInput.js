@@ -24,7 +24,7 @@ class HighScoreInput extends Component {
                 <p>
                     <label>
                         Bravo ! Entre ton prénom :
-                        <input type="text" autoComplete="given-name" value={this.state.winner} onChange={this.handleWinnerUpdate}/>
+                        <input type="text" autoComplete="given-name" value={this.state.winner} onChange={this.handleWinnerUpdate} minLength="3"/>
                     </label>
                     <button type="submit">J’ai gagné !</button>
                 </p>
@@ -36,6 +36,7 @@ class HighScoreInput extends Component {
 HighScoreInput.propTypes = {
     guesses: PropTypes.number.isRequired,
     onStored: PropTypes.func.isRequired,
+    winner: PropTypes.string.isRequired
 }
 
 export default HighScoreInput
