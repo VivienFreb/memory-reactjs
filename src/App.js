@@ -5,9 +5,7 @@ import './App.css'
 
 import Card from './Card'
 import GuessCount from './GuessCount'
-
 import HallOfFame from "./HallOfFame";
-import CreditCard from "./CreditCard";
 import HighScoreInput from "./HighScoreInput";
 
 const SIDE = 6
@@ -49,19 +47,20 @@ class App extends Component {
         return indexMatched ? 'visible' : 'hidden'
     }
 
-    handleCardClick = index => {
+    handleCardClick = (index) => {
         const { currentPair } = this.state
 
         if(currentPair.length === 2){
             return
         }
 
-        if (currentPair.length === 0){
-            this.setState({currentPair: [index] })
-            return
+        if (currentPair.length === 1 && index !== currentPair[0]){
+            this.handleNewPairClosedBy(index)
         }
 
-        this.handleNewPairClosedBy(index)
+        if (currentPair.length === 0){
+            this.setState({currentPair: [index] })
+        }
     }
 
     handleNewPairClosedBy(index){
