@@ -5,10 +5,10 @@ import './App.css'
 
 import Card from './Card'
 import GuessCount from './GuessCount'
-import HallOfFame from "./HallOfFame";
+import HallOfFame, {FAKE_HOF} from "./HallOfFame";
 import HighScoreInput from "./HighScoreInput";
 
-const SIDE = 6
+const SIDE = 2
 const SYMBOLS = '🍕🍔🍟🌭🍿🧂🥓🥚🥯🥨🥐🍞🧈🥞🧇🍳🥖🧀🥗🥙🥪🌮🌯🥫🍱🥡🥠🍠🥟🥩🍗🍖🍘🍙🍚🍛🍜🦪🍣🍤🍥🥮🍢🧆🥘🍲🍝🥣🍰🎂🍪🍩🍨🍧🍦🥧🧁🍫🍬🍭🍡🍮🍯🍼🍷🍾🍶🧉🍵☕🧃🥛🍸🍹🍺🍻🥂🥃🧊🥤🍇🥥🥝🏺🥄🍴🍽🥢🍈🍉🍊🍋🍌🍍🥭🍎🌽🍆🍅🍓🍒🍑🍐🍏🌶🍄🥑🥒🥬🥦🥔🧄🌹🏵🌸💐🥜🌰🥕🧅🌺🌻🌼🌷🥀☘🌱🌲🍂🍁🍀🌿🌾🌵🌴🌳🍃'
 const PAUSE_MS = 750
 
