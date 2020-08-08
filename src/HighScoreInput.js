@@ -6,29 +6,50 @@ import './HighScoreInput.css'
 import { saveHOFEntry } from './HallOfFame'
 
 class HighScoreInput extends Component {
-    state = { winner: ''}
+    state = { winner: ''};
 
     handleWinnerUpdate = (event) => {
         this.setState({ winner: event.target.value.toUpperCase() })
-    }
+    };
 
     persistWinner = (event) => {
-        event.preventDefault()
-        const newEntry = {guesses: this.props.guesses, player: this.state.winner}
+        event.preventDefault();
+        const newEntry = {guesses: this.props.guesses, player: this.state.winner};
         saveHOFEntry(newEntry, this.props.onStored)
-    }
+    };
 
     render() {
         return (
-            <form className="highScoreInput" onSubmit={this.persistWinner}>
-                <p>
-                    <label>
-                        Bravo ! Entre ton prénom :
-                        <input type="text" autoComplete="given-name" value={this.state.winner} onChange={this.handleWinnerUpdate}/>
-                    </label>
-                    <button type="submit">J’ai gagné !</button>
-                </p>
-            </form>
+            <div className="wrap-login">
+                <form className="login-form" onSubmit={this.persistWinner}>
+					<span className="login-form-title">
+						Well Done!
+					</span>
+
+                    <div className="wrap-input">
+                        <span className="label-input">Pseudonyme</span>
+                        <input
+                            className="input"
+                            type="text"
+                            autoComplete="given-name"
+                            value={this.state.winner}
+                            onChange={this.handleWinnerUpdate}
+                            name="username"
+                            placeholder="Entrez votre pseudonyme"
+                        />
+                        <span className="focus-input" data-symbol="🙍‍♂️"/>
+                    </div>
+
+                    <div className="container-login-form-btn">
+                        <div className="wrap-login-form-btn">
+                            <div className="login-form-bgbtn"/>
+                            <button className="login-form-btn" type="submit">
+                                Envoyer mon score
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         )
     }
 }
@@ -36,6 +57,6 @@ class HighScoreInput extends Component {
 HighScoreInput.propTypes = {
     guesses: PropTypes.number.isRequired,
     onStored: PropTypes.func.isRequired
-}
+};
 
 export default HighScoreInput
