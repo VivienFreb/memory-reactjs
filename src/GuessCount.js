@@ -6,13 +6,15 @@ import './GuessCount.css'
 const GuessCount = ({ guesses }) => (
     <div className="guesses">
         <p>
-            Vous êtes à {guesses} essais.
+            Vous êtes à {guesses}
+            {guesses <= 1 ? ' tentative' : ' tentatives'}
+            .
         </p>
-    </div>)
+    </div>);
 
 
 GuessCount.propTypes = {
     guesses: PropTypes.number.isRequired,
-}
+};
 
 export default GuessCount

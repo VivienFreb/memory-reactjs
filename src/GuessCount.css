@@ -2,6 +2,11 @@
     font-size: 1em;
     width: calc(100% - 0.4em);
     margin: 0.2em;
-    text-align: right;
+    text-align: center;
     font-family: Menlo, Monaco, Consolas, Inconsolata, 'Courier New', monospace;
+}
+.guesses p{
+    color: #ffffff;
+    font-weight: bolder;
+    font-size: 2em;
 }

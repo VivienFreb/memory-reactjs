@@ -8,7 +8,7 @@ import GuessCount from './GuessCount'
 import HallOfFame from "./HallOfFame";
 import HighScoreInput from "./HighScoreInput";
 
-const SIDE = 6;
+const NBR_PAIRES = 18;
 const SYMBOLS = '🍕🍔🍟🌭🍿🧂🥓🥚🥯🥨🥐🍞🧈🥞🧇🍳🥖🧀🥗🥙🥪🌮🌯🥫🍱🥡🥠🍠🥟🥩🍗🍖🍘🍙🍚🍛🍜🦪🍣🍤🍥🥮🍢🧆🥘🍲🍝🥣🍰🎂🍪🍩🍨🍧🍦🥧🧁🍫🍬🍭🍡🍮🍯🍼🍷🍾🍶🧉🍵☕🧃🥛🍸🍹🍺🍻🥂🥃🧊🥤🍇🥥🥝🏺🥄🍴🍽🥢🍈🍉🍊🍋🍌🍍🥭🍎🌽🍆🍅🍓🍒🍑🍐🍏🌶🍄🥑🥒🥬🥦🥔🧄🌹🏵🌸💐🥜🌰🥕🧅🌺🌻🌼🌷🥀☘🌱🌲🍂🍁🍀🌿🌾🌵🌴🌳🍃';
 const PAUSE_MS = 750;
 
@@ -23,7 +23,7 @@ class App extends Component {
 
     generateCards() {
         const result = [];
-        const size = SIDE * SIDE;
+        const size = NBR_PAIRES * 2;
         const candidates = shuffle(SYMBOLS);
         while (result.length < size) {
             const card = candidates.pop();
@@ -32,6 +32,16 @@ class App extends Component {
         console.log(result);
         return shuffle(result)
     }
+
+    newGame = () => {
+        this.setState({
+            plateauCards: this.generateCards(),
+            guesses: 0,
+            currentPair: [],
+            matchedCardIndices: [],
+            hallOfFame: null,
+        });
+    };
 
     getCardFeedbackFor(index){
         const { currentPair, matchedCardIndices } = this.state;
@@ -85,7 +95,7 @@ class App extends Component {
         // const won = true;
         return (
             <div className="memory">
-                <button onClick={this.generateCards}>
+                <button className="newGameBtn" onClick={this.newGame}>
                     Nouvelle partie
                 </button>
                 <GuessCount guesses={guesses} />
@@ -99,11 +109,11 @@ class App extends Component {
                     />
                 ))}
                 {won &&
-                    (hallOfFame ? (
-                        <HallOfFame entries={hallOfFame}/>
-                    ) : (
-                        <HighScoreInput guesses={guesses} onStored={this.displayHallOfFame} />
-                    ))
+                (hallOfFame ? (
+                    <HallOfFame entries={hallOfFame}/>
+                ) : (
+                    <HighScoreInput guesses={guesses} onStored={this.displayHallOfFame} />
+                ))
                 }
             </div>
         )
