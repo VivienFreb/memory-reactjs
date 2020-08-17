@@ -1,4 +1,4 @@
-# AgenceImmobiliere
+# Jeu de mémoire
 
 Projet de jeu de mémoire qui m'a permis d'apprendre à utiliser ReactJS
 
